@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crônicas &amp; Dados — RPG de Mesa Online</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">
+        <span>🎲 Crônicas &amp; Dados</span>
+        <span class="badge">RPG Online</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#mesas">Mesas Abertas</a>
+        <a href="#como-funciona">Como Funciona</a>
+        <a href="#sistemas">Sistemas</a>
+      </nav>
+      <button class="btn btn-primary" type="button" onclick="openCreateModal()">+ Criar Mesa</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Encontre sua próxima aventura de <em>RPG de Mesa</em> online</h1>
+          <p>
+            Conecte-se a mestres e jogadores, entre em campanhas abertas, teste dados na hora e comece a jogar sem complicação — ideal para iniciantes e veteranos.
+          </p>
+          <div class="hero-actions">
+            <a href="#mesas" class="btn btn-primary">Explorar Mesas Abertas</a>
+            <button class="btn btn-outline" type="button" onclick="openCreateModal()">Anunciar Campanha</button>
+          </div>
+          <div class="stats">
+            <div>
+              <strong>+120</strong>
+              <span>Mesas ativas</span>
+            </div>
+            <div>
+              <strong>18</strong>
+              <span>Sistemas populares</span>
+            </div>
+            <div>
+              <strong>100%</strong>
+              <span>Foco na comunidade</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="dice-box" aria-label="Rolador de dados rápido">
+          <h2>Rolador de Dados Rápido</h2>
+          <p>Clique em um dado para simular uma rolagem agora mesmo.</p>
+          <div class="dice-buttons">
+            <button class="dice-btn" type="button" onclick="rollDice(4)">d4</button>
+            <button class="dice-btn" type="button" onclick="rollDice(6)">d6</button>
+            <button class="dice-btn" type="button" onclick="rollDice(8)">d8</button>
+            <button class="dice-btn" type="button" onclick="rollDice(10)">d10</button>
+            <button class="dice-btn" type="button" onclick="rollDice(12)">d12</button>
+            <button class="dice-btn" type="button" onclick="rollDice(20)">d20</button>
+          </div>
+          <div class="dice-result" id="diceResult">
+            <span class="roll-value">—</span>
+            <span class="roll-detail">Nenhuma rolagem ainda</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="mesas">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Mesas Abertas</h2>
+            <p>Filtre por sistema e solicite vaga na campanha que combina com o seu estilo de jogo.</p>
+          </div>
+          <button class="btn btn-outline" type="button" onclick="resetTables()">Restaurar Mesas Padrão</button>
+        </div>
+
+        <div class="filters" id="filters">
+          <button class="filter-btn active" type="button" data-system="Todos">Todos</button>
+          <button class="filter-btn" type="button" data-system="D&D 5e">D&amp;D 5e</button>
+          <button class="filter-btn" type="button" data-system="Tormenta20">Tormenta20</button>
+          <button class="filter-btn" type="button" data-system="Ordem Paranormal">Ordem Paranormal</button>
+          <button class="filter-btn" type="button" data-system="Call of Cthulhu">Call of Cthulhu</button>
+        </div>
+
+        <div class="grid-3" id="tablesGrid"></div>
+      </div>
+    </section>
+
+    <section id="como-funciona">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Como Funciona</h2>
+            <p>Três passos simples para sair do papel e começar a jogar online.</p>
+          </div>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Escolha uma mesa ou sistema</h3>
+            <p>Veja horários, nível de experiência aceito, tom da história e vagas disponíveis.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Combine voz e mesa virtual</h3>
+            <p>As sessões costumam usar Discord para chamada e VTTs ou planilhas compartilhadas.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Role os dados e jogue</h3>
+            <p>Crie seu personagem com o mestre, entre na sessão zero e viva a aventura.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sistemas">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Sistemas em Destaque</h2>
+            <p>Da fantasia heroica clássica à investigação sobrenatural.</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div>
+              <div class="card-top"><span class="tag">Fantasia Medieval</span></div>
+              <h3>D&amp;D 5e</h3>
+              <p>Aventuras em masmorras, dragões e reinos mágicos com regras acessíveis e bastante conteúdo.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <div class="card-top"><span class="tag">Nacional • Fantasia</span></div>
+              <h3>Tormenta20</h3>
+              <p>Cenário brasileiro rico em lore, combates dinâmicos e grande variedade de classes e poderes.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <div class="card-top"><span class="tag">Investigação &amp; Terror</span></div>
+              <h3>Ordem Paranormal / Cthulhu</h3>
+              <p>Mistérios, tensão psicológica, pistas e escolhas difíceis onde cada decisão pesa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><strong>Crônicas &amp; Dados</strong> — Portal estático de RPG de Mesa Online.</div>
+      <div>Pronto para hospedagem estática (GitHub Pages).</div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="createModal">
+    <div class="modal">
+      <h3>Anunciar Nova Mesa</h3>
+      <p>Preencha os dados básicos para adicionar a campanha à lista.</p>
+      <form id="createTableForm">
+        <div class="field">
+          <label for="title">Título da campanha</label>
+          <input id="title" required placeholder="Ex: Sombras de Valoria" />
+        </div>
+        <div class="field">
+          <label for="system">Sistema</label>
+          <select id="system">
+            <option>D&amp;D 5e</option>
+            <option>Tormenta20</option>
+            <option>Ordem Paranormal</option>
+            <option>Call of Cthulhu</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="schedule">Dia e horário</label>
+          <input id="schedule" required placeholder="Ex: Quartas, 20h" />
+        </div>
+        <div class="field">
+          <label for="spots">Vagas abertas</label>
+          <input id="spots" type="number" min="1" max="8" value="3" required />
+        </div>
+        <div class="field">
+          <label for="desc">Resumo rápido</label>
+          <textarea id="desc" rows="2" required placeholder="Ex: Campanha aberta para iniciantes, foco em exploração e interpretação."></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" onclick="closeCreateModal()">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Publicar Mesa</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
